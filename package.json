@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "name": "mirror-dashboard",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "preact build",
+    "serve": "preact build && serve build --single",
+    "dev": "preact watch",
+    "test": "jest"
+  },
+  "dependencies": {
+    "preact": "^10.0.4",
+    "styled-components": "^4.4.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.1.2",
+    "jest": "^24.9.0",
+    "jest-preset-preact": "^1.0.0",
+    "preact-cli": "^3.0.0-rc.6",
+    "preact-render-spy": "^1.2.1",
+    "prettier": "^1.18.2",
+    "serve": "^11.1.0"
+  },
+  "jest": {
+    "preset": "jest-preset-preact"
+  }
+}
