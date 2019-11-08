@@ -1,10 +1,14 @@
 import styled from 'styled-components'
+import { animated } from 'react-spring'
 
-export const Wrapper = styled.section`
+export const Wrapper = styled(animated.section)`
+  margin: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  grid-column: 11 / span 12;
+  grid-column: 11 / 13;
+  grid-row: 1 / 3;
+  place-self: stretch;
 `
 
 export const Time = styled.div`
@@ -12,5 +16,5 @@ export const Time = styled.div`
 `
 
 export const Date = styled.div`
-  font-size: 2rem;
+  font-size: 1.6rem;
 `
