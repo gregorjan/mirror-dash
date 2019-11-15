@@ -4,14 +4,8 @@ export const GlobalStyle = createGlobalStyle`
     body {
         margin: 0;
         font-family: sans-serif;
-        
         color: white;
         background-color: black;
-
-        @media (prefers-color-scheme: dark) {
-          color: black;
-          background-color: white;
-        }
     }
 `
 
