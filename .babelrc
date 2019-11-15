@@ -9,6 +9,8 @@
         "import": "h",
         "export": "h"
       }
-    ]
+    ],
+    "@babel/plugin-proposal-optional-chaining",
+    "@babel/plugin-syntax-nullish-coalescing-operator"
   ]
 }

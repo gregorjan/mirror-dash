@@ -1,5 +1,7 @@
 {
   "env": {
+    "amd": true,
+    "node": true,
     "browser": true
   },
   "extends": [
@@ -17,8 +19,7 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2018,
-    "sourceType": "module"
+    "ecmaVersion": 2018
   },
   "plugins": ["react", "react-hooks"],
   "rules": {
@@ -27,6 +28,8 @@
     "semi": ["error", "never"],
     "react/react-in-jsx-scope": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "no-console": "warn",
+    "no-alert": "warn"
   }
 }
