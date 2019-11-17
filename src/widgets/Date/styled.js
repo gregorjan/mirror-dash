@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { animated } from 'react-spring'
 
 export const Wrapper = styled(animated.section)`
+  user-select: none;
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -9,6 +10,10 @@ export const Wrapper = styled(animated.section)`
   grid-column: 11 / 13;
   grid-row: 1 / 3;
   place-self: stretch;
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
 `
 
 export const Time = styled.div`

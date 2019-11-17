@@ -5336,6 +5336,11 @@ react-spring@^8.0.27:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
 
+react-use-gesture@^6.0.14:
+  version "6.0.14"
+  resolved "https://repo.plus4u.net/repository/npm/react-use-gesture/-/react-use-gesture-6.0.14.tgz#ab2d35ef72a5fb6060a6160eb12568c276f8a4b1"
+  integrity sha512-d9cnZJ0DOFd3FIO76J776DyhtbODgbxGKu19lvc1aSNTnRV5EKr9V4Uda188l2Qh0Va3pqWGxEQlw72r2cmnFQ==
+
 read-config-file@5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/read-config-file/-/read-config-file-5.0.0.tgz#1487c983fae9c1b672d3acda5cac899a2d451f02"
@@ -6633,6 +6638,11 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
+
+vec-la@^1.5.0:
+  version "1.5.0"
+  resolved "https://repo.plus4u.net/repository/npm/vec-la/-/vec-la-1.5.0.tgz#cfedcac1028dad156c373dbb87e114b072d05cd8"
+  integrity sha512-XKjE9qYtOgpAS1xRMTqeII7oFdolanVqrzl2KngiH8xiExCdWDLOYDwSLKHkmXadbU+JSP9Poy0v+xmYlkxUAg==
 
 vm-browserify@^1.0.1:
   version "1.1.2"

@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 export const App = styled.div`
+  position: relative;
   overflow: hidden;
   display: grid;
   grid-template-columns: repeat(12, 1fr);

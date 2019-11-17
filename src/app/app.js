@@ -8,13 +8,13 @@ import { calcCursorPosition, Planetoids } from '../utils'
 
 const App = () => {
   const [sprops, set] = useSpring(() => ({
-    xy: [0, 0],
+    pos: [0, 0],
     config: { mass: 120, tension: 500, friction: 140 },
   }))
   return (
     <S.App
       onMouseMove={({ clientX: x, clientY: y }) =>
-        set({ xy: calcCursorPosition(x, y) })
+        set({ pos: calcCursorPosition(x, y) })
       }
     >
       <S.GlobalStyle />
@@ -22,7 +22,7 @@ const App = () => {
       {Planetoids.map(({ translate, key, size, color }) => (
         <Planetoid
           key={key}
-          style={{ transform: sprops.xy.interpolate(translate) }}
+          style={{ transform: sprops.pos.interpolate(translate) }}
           color={color}
           size={size}
         />
