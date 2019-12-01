@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import { animated } from 'react-spring'
 
-export const Wrapper = styled(animated.section)`
+export const Wrapper = styled.section`
   user-select: none;
   margin: 20px;
   display: flex;

@@ -5,7 +5,8 @@
     "browser": true
   },
   "extends": [
-    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
     "plugin:react/recommended",
     "plugin:prettier/recommended"
   ],
@@ -14,7 +15,7 @@
       "version": "detect"
     }
   },
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true

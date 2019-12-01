@@ -1,17 +1,16 @@
 const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
-const path = require('path')
 let mainWindow
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 900,
     height: 680,
-    frame: false,
+    frame: true,
     backgroundColor: '#000',
-    fullscreen: true,
+    fullscreen: false,
   })
-  mainWindow.loadURL(`file://${path.join(__dirname, '../app/dist/index.html')}`)
+  mainWindow.loadFile('dist/index.html')
   mainWindow.on('closed', () => (mainWindow = null))
 }
 app.on('ready', createWindow)

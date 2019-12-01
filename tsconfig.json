@@ -1,0 +1,16 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "allowJs": false,
+    "outDir": "./public",
+    "target": "es5",
+    "module": "es2015",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "jsx": "react"
+  },
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"],
+  "exclude": ["./node_modules"]
+}

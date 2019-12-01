@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'preact/hooks'
+import * as React from 'react'
 
 import { WidgetWrapper } from '../../atoms'
 import * as S from './styled'
 
 import { getDate } from '../../utils'
 
-export const DateWidget = () => {
-  const [dateTime, setDateTime] = useState(getDate())
+export const Date: React.FC = () => {
+  const [dateTime, setDateTime] = React.useState(getDate())
   const dateInterval = setInterval(() => setDateTime(getDate()), 1000)
 
-  useEffect(() => {
-    return () => {
+  React.useEffect(() => {
+    return (): void => {
       clearInterval(dateInterval)
     }
   }, [dateInterval])
