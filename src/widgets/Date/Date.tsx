@@ -17,7 +17,7 @@ export const Date: React.FC = () => {
 
   const { date, time } = dateTime
   return (
-    <WidgetWrapper>
+    <WidgetWrapper location={[13, 0]} dimensions={[3, 2]}>
       <S.Time>{time}</S.Time>
       <S.Date>{date}</S.Date>
     </WidgetWrapper>
