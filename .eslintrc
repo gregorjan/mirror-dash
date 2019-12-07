@@ -31,6 +31,7 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "no-console": "warn",
-    "no-alert": "warn"
+    "no-alert": "warn",
+    "react/prop-types": "off"
   }
 }
