@@ -33,7 +33,7 @@ export const WidgetWrapper: React.FC<Props> = ({
         return 0
       }
       if (pos > viewport[i]) {
-        return viewport[1]
+        return viewport[i]
       }
       return pos
     })
