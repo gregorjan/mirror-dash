@@ -1,21 +1,31 @@
 interface Date {
+  day: string
   date: string
   time: string
 }
 
+const weekDays = [
+  'neděle',
+  'pondělí',
+  'úterý',
+  'středa',
+  'čtvrtek',
+  'pátek',
+  'sobota',
+]
+
 export const getDate = (): Date => {
   const date = new Date()
-  const year = date.getUTCFullYear()
-  const day = date.getUTCDate()
-  const month = date.getUTCMonth() + 1
-  const hours = date.getUTCHours()
-  const minutes = date.getUTCMinutes()
-
-  const parsedHours = hours < 10 ? `0${hours}` : hours
-  const parsedMinutes = minutes < 10 ? `0${minutes}` : minutes
 
   return {
-    date: `${day}. ${month}. ${year}`,
-    time: `${parsedHours}:${parsedMinutes}`,
+    day: weekDays[date.getDay()],
+    date: date.toLocaleDateString('cs-CZ', {
+      day: 'numeric',
+      month: 'long',
+    }),
+    time: date.toLocaleTimeString('cs-CZ', {
+      hour: 'numeric',
+      minute: 'numeric',
+    }),
   }
 }

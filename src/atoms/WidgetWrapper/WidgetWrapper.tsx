@@ -17,7 +17,7 @@ export const WidgetWrapper: React.FC<Props> = ({
   location,
   dimensions,
 }) => {
-  const { size, viewport, grid } = React.useContext(Context)
+  const { size, viewport, grid, canMove } = React.useContext(Context)
   const [{ position }, setSpringProps] = useSpring(() => ({
     position: [location[0] * size[0], location[1] * size[1]],
   }))
@@ -41,19 +41,20 @@ export const WidgetWrapper: React.FC<Props> = ({
   }
 
   const bind = useDrag(({ down, movement, memo = position.getValue() }) => {
-    if (down && movement) {
-      setSpringProps({
-        position: [movement[0] + memo[0], movement[1] + memo[1]],
-        immediate: true,
-      })
-    } else {
-      setSpringProps({
-        position: calcPosition(movement, memo),
-        immediate: false,
-      })
+    if (canMove) {
+      if (down && movement) {
+        setSpringProps({
+          position: [movement[0] + memo[0], movement[1] + memo[1]],
+          immediate: true,
+        })
+      } else {
+        setSpringProps({
+          position: calcPosition(movement, memo),
+          immediate: false,
+        })
+      }
+      return memo
     }
-
-    return memo
   })
 
   return (
@@ -62,6 +63,7 @@ export const WidgetWrapper: React.FC<Props> = ({
       style={{
         transform: position.to((x, y) => `translate3d(${x}px,${y}px,0)`),
       }}
+      canMove={canMove}
       dimensions={pixelDimensions}
     >
       <S.Content>{children}</S.Content>

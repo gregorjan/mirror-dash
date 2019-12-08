@@ -15,10 +15,11 @@ export const Date: React.FC = () => {
     }
   }, [dateInterval])
 
-  const { date, time } = dateTime
+  const { day, date, time } = dateTime
   return (
     <WidgetWrapper location={[13, 0]} dimensions={[3, 2]}>
       <S.Time>{time}</S.Time>
+      <S.Day>{day}</S.Day>
       <S.Date>{date}</S.Date>
     </WidgetWrapper>
   )

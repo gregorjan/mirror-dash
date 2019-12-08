@@ -3,6 +3,7 @@ import { animated } from 'react-spring'
 
 interface Styles {
   dimensions: number[]
+  canMove: boolean
 }
 
 export const Wrapper = styled(animated.section)<Styles>`
@@ -11,10 +12,15 @@ export const Wrapper = styled(animated.section)<Styles>`
   width: ${({ dimensions }): number => dimensions[0]}px;
   user-select: none;
   padding: 20px;
-  cursor: grab;
-  &:active {
-    cursor: grabbing;
-  }
+  ${({ canMove }): string =>
+    canMove
+      ? `
+          cursor: grab;
+          &:active {
+            cursor: grabbing;
+          }
+        `
+      : ''};
 `
 export const Content = styled.div`
   display: flex;

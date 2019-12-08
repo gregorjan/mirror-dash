@@ -11,8 +11,9 @@ const grid = [16, 9]
 const size = viewport.map((d, i) => d / grid[i])
 
 const App: React.FC = () => {
+  const [canMove, setCanMove] = React.useState(false)
   return (
-    <Context.Provider value={{ viewport, grid, size }}>
+    <Context.Provider value={{ viewport, grid, size, canMove }}>
       <S.App>
         <S.GlobalStyle />
         <Date />
