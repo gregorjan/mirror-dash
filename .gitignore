@@ -1,5 +1,5 @@
 node_modules
-/build
-/dist
-/edist
-/*.log
+build
+dist
+edist
+*.log

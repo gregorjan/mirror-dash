@@ -27,7 +27,7 @@
   },
   "plugins": ["@typescript-eslint", "react", "react-hooks"],
   "rules": {
-    "linebreak-style": ["error", "unix"],
+    "linebreak-style": ["error", "windows"],
     "quotes": ["error", "single"],
     "semi": ["error", "never"],
     "react/prop-types": "off",
