@@ -29,3 +29,26 @@ export const getDate = (): Date => {
     }),
   }
 }
+
+export const calcPosition = (
+  movement: number[],
+  memo: number[],
+  viewport: number[],
+  grid: number[],
+  size: number[],
+  dimensions: number[],
+): number[] => {
+  return size.map((s, i) => {
+    const pos =
+      s * Math.round(((movement[i] + memo[i]) / viewport[i]) * grid[i])
+
+    if (pos < 0) {
+      return 0
+    }
+
+    if (pos + size[i] * dimensions[i] > viewport[i]) {
+      return viewport[i] - size[i] * dimensions[i]
+    }
+    return pos
+  })
+}

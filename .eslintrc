@@ -17,21 +17,26 @@
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "useJSXTextNode": true,
+    "ext": ["js", "jsx", "ts", "tsx"],
     "ecmaFeatures": {
       "jsx": true
-    },
-    "ecmaVersion": 2018
+    }
   },
-  "plugins": ["react", "react-hooks"],
+  "plugins": ["@typescript-eslint", "react", "react-hooks"],
   "rules": {
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "never"],
+    "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "no-console": "warn",
     "no-alert": "warn",
-    "react/prop-types": "off"
+    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/member-delimiter-style": 0
   }
 }

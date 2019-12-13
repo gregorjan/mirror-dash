@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useSpring } from 'react-spring'
 import { useDrag } from 'react-use-gesture'
 
+import { calcPosition } from '../../utils'
 import { Context } from '../../app/context'
 
 import * as S from './styled'
@@ -24,22 +25,6 @@ export const WidgetWrapper: React.FC<Props> = ({
 
   const pixelDimensions = size.map((s, i) => s * dimensions[i])
 
-  const calcPosition = (movement: number[], memo: number[]): number[] => {
-    return size.map((s, i) => {
-      const pos =
-        s * Math.round(((movement[i] + memo[i]) / viewport[i]) * grid[i])
-
-      if (pos < 0) {
-        return 0
-      }
-
-      if (pos + size[i] * dimensions[i] > viewport[i]) {
-        return viewport[i] - size[i] * dimensions[i]
-      }
-      return pos
-    })
-  }
-
   const bind = useDrag(({ down, movement, memo = position.getValue() }) => {
     if (canMove) {
       if (down && movement) {
@@ -49,7 +34,14 @@ export const WidgetWrapper: React.FC<Props> = ({
         })
       } else {
         setSpringProps({
-          position: calcPosition(movement, memo),
+          position: calcPosition(
+            movement,
+            memo,
+            viewport,
+            grid,
+            size,
+            dimensions,
+          ),
           immediate: false,
         })
       }
