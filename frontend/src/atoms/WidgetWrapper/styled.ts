@@ -3,7 +3,7 @@ import { animated } from 'react-spring'
 
 interface Styles {
   dimensions: number[]
-  canMove: boolean
+  canmove: boolean
 }
 
 export const Wrapper = styled(animated.section)<Styles>`
@@ -12,8 +12,8 @@ export const Wrapper = styled(animated.section)<Styles>`
   width: ${({ dimensions }): number => dimensions[0]}px;
   user-select: none;
   padding: 20px;
-  ${({ canMove }): string =>
-    canMove
+  ${({ canmove }): string =>
+    canmove
       ? `
           cursor: grab;
           &:active {

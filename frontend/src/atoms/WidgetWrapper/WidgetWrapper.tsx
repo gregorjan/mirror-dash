@@ -55,7 +55,7 @@ export const WidgetWrapper: React.FC<Props> = ({
       style={{
         transform: position.to((x, y) => `translate3d(${x}px,${y}px,0)`),
       }}
-      canMove={canMove}
+      canmove={canMove || undefined}
       dimensions={pixelDimensions}
     >
       <S.Content>{children}</S.Content>

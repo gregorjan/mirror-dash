@@ -1,10 +1,23 @@
 import * as React from 'react'
+import { ApolloProvider } from 'react-apollo'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { SubscriptionClient } from 'subscriptions-transport-ws'
+import { ApolloClient } from 'apollo-client';
 
 import { Context } from './context'
-
 import * as S from './styled'
+import { Date, Weather } from '../widgets'
 
-import { Date } from '../widgets'
+const WSClient = new SubscriptionClient(`ws://localhost:4000/api/ws`, {
+  reconnect: true,
+});
+
+
+
+const apolloClient = new ApolloClient({
+  link: WSClient as any,
+  cache: new InMemoryCache()
+});
 
 const viewport = [window.innerWidth, window.innerHeight]
 const grid = [16, 9]
@@ -14,10 +27,13 @@ const App: React.FC = () => {
   const [canMove, setCanMove] = React.useState(false)
   return (
     <Context.Provider value={{ viewport, grid, size, canMove }}>
-      <S.App>
-        <S.GlobalStyle />
-        <Date />
-      </S.App>
+      <ApolloProvider client={apolloClient}>
+        <S.App>
+          <S.GlobalStyle />
+          <Date />
+          <Weather />
+        </S.App>
+      </ApolloProvider>
     </Context.Provider>
   )
 }
