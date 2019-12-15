@@ -8,11 +8,9 @@ import { Context } from './context'
 import * as S from './styled'
 import { Date, Weather } from '../widgets'
 
-const WSClient = new SubscriptionClient(`ws://localhost:4000/api/ws`, {
+const WSClient = new SubscriptionClient(`ws://localhost:3000/api/ws`, {
   reconnect: true,
 });
-
-
 
 const apolloClient = new ApolloClient({
   link: WSClient as any,

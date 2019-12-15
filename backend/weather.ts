@@ -1,82 +1,48 @@
-import mongoose, { Schema, model, Types } from 'mongoose'
+import { Schema, model } from 'mongoose'
 
-import { connect } from './utils'
 import fetch from 'node-fetch'
 
-const WeatherParamsSchema = new Schema({
-  key: String,
-  lat: String,
-  lon: String,
-  days: String,
-})
+const url = 'http://localhost:4000'
 
-const WeatherParameters = model('WeatherParameters', WeatherParamsSchema)
+// mutation UpdateWeather {
+//     updateWeather(temp: "10", description: "10", pop: "10", windSpeed: "10", maxTemp: "10", minTemp: "10") { 
+//       temp
+//     } 
+//   }
 
-const WeatherSchema = new Schema({
-  temp: String,
-  min_temp: String,
-  max_temp: String,
-  pop: String,
-  wind_spd: String,
-  description: String,
-})
+const query = `
+    {
+        weather {
+            temp
+        }
+    }
+`
 
-const Weather = model('Weather', WeatherSchema)
-
-const createWeatherParams = () => {
-  return connect((disconnect) => {
-    WeatherParameters.findOneAndUpdate(
-      {},
-      {
-        key: '', //weatherbit.io key
-        lat: '',
-        lon: '',
-        days: '',
-      },
-      {
-        upsert: true,
-      },
-    ).exec((err, response) => disconnect(err, response))
+export const updateWeather = () => {
+  fetch(url, {
+    method: 'POST',
+    Accept: 'api_version=2',
+    'Content-Type': 'application/graphql',
+    body: JSON.stringify({ query })
   })
+    .then((response) => response)
+    .then((data) => {
+      console.log('Here is the data: ', data)
+    })
 }
 
-const findWeatherParams = () => {
-  return connect((disconnect) =>
-    WeatherParameters.findOne({}).exec((err, response) =>
-      disconnect(err, response),
-    ),
-  )
-}
+// export const updateWeather = (): void => {
+//   findWeatherParams().then(({ key, lat, lon, days }) => {
+//     fetch(
+//       `https://api.weatherbit.io/v2.0/forecast/daily?key=${key}&lat=${lat}&lon=${lon}&days=${days}`,
+//     )
+//       .then((res) => res.json())
+//       .then((json) => findWeatherAndUpdate(json.data))
+//   })
+// }
 
-const formatWeather = ([
-  {
-    temp,
-    min_temp,
-    max_temp,
-    pop,
-    wind_spd,
-    weather: { description },
-  },
-]) => ({ temp, min_temp, max_temp, pop, wind_spd, description })
-
-const findWeatherAndUpdate = (data) => {
-  return connect((disconnect) => {
-    return Weather.findOneAndUpdate(
-      {},
-      formatWeather(data),
-      {
-        upsert: true,
-      },
-    ).exec((err, response) => disconnect(err, response))
-  })
-}
-
-export const updateWeather = (): void => {
-  findWeatherParams().then(({ key, lat, lon, days }) => {
-    fetch(
-      `https://api.weatherbit.io/v2.0/forecast/daily?key=${key}&lat=${lat}&lon=${lon}&days=${days}`,
-    )
-      .then((res) => res.json())
-      .then((json) => findWeatherAndUpdate(json.data))
-  })
-}
+// export const getWeather = () => {
+//   return connect((disconnect) =>
+//     Weather.findOne({}).exec((err, response) => disconnect(err, response)),
+//   )
+// }
