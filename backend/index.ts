@@ -1,5 +1,3 @@
-import fetch from 'node-fetch'
-
 import { Server } from 'http'
 import { SubscriptionServer } from 'subscriptions-transport-ws'
 import { execute, subscribe } from 'graphql'
@@ -7,6 +5,8 @@ import * as GraphHTTP from 'express-graphql'
 import * as express from 'express'
 
 import schema from './schema'
+
+import { updateWeather } from './weather'
 
 const app = express()
 const { PORT = 3000 } = process.env
@@ -36,3 +36,8 @@ SubscriptionServer.create(
 server.listen(PORT, () => {
   console.log('server started at http://localhost:' + PORT)
 })
+
+updateWeather()
+setInterval(updateWeather, 60000)
+
+

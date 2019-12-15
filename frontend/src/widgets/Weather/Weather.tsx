@@ -11,8 +11,6 @@ const HELLO = gql`
   }
 `;
 
-
-
 export const Weather: React.FC = () => {
   const { loading, error, data } = useQuery(HELLO);
   console.log(loading, error, data)
