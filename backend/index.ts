@@ -38,6 +38,6 @@ server.listen(PORT, () => {
 })
 
 updateWeather()
-setInterval(updateWeather, 60000)
+
 
 
